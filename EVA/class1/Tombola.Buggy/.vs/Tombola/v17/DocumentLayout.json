@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2AB1D2F7-399C-4BDE-9013-D7348C4E0CE8}|Tombola.csproj|c:\\mac\\home\\documents\\school3\\eva\\class1\\tombola.buggy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AB1D2F7-399C-4BDE-9013-D7348C4E0CE8}|Tombola.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAMAAABAqZmZmZkMwBgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T19:22:10.956Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
