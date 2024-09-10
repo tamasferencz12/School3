@@ -1,1 +1,1 @@
-# Second year, firsr semester
+# Second year, first semester
