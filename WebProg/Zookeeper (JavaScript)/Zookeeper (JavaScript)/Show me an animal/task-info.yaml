@@ -1,0 +1,13 @@
+type: remote_edu
+custom_name: Show me an animal!
+files:
+  - name: main.js
+    visible: true
+    learner_created: false
+  - name: tests.py
+    visible: false
+    learner_created: false
+feedback_link: https://hyperskill.org/projects/225/stages/1129/implement#comment
+check_profile: hyperskill_node_javascript
+status: Unchecked
+record: -1

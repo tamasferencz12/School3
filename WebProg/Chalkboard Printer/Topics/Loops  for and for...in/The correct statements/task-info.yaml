@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: The initial value of the variable counter comes first in the parentheses of
+      the for loop
+  - text: The condition in which the loop stops is in the third part in the parentheses
+      of the for loop
+  - text: The condition in which the loop stops is set in the first part in the parentheses
+      of the for loop
+  - text: The for ... in loop passes only through the enumerable properties of the object
+files:
+  - name: main.js
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9121#comment
+status: Solved
+record: -1
+local_check: false

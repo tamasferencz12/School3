@@ -1,0 +1,50 @@
+<div class="step-text">
+<p></p>
+<p>Sometimes, programmers must repeat the same part of code several times. Assume you go to work every day, Monday to Friday, and greet your colleague Nessie as you get to your office: "Hi, Nessie!" Let's simulate this situation using the tools we already have:</p>
+<pre><code class="language-javascript">console.log("1, Hi, Nessie!"); // Monday
+console.log("2, Hi, Nessie!"); // Tuesday
+console.log("3, Hi, Nessie!"); // Wednesday
+console.log("4, Hi, Nessie!"); // Thursday
+console.log("5, Hi, Nessie!"); // Friday</code></pre>
+<p>We can create a loop instead of the repetition:</p>
+<pre><code class="language-javascript">let i;
+for (i = 1; i &lt;= 5; i++) {
+    console.log(i + ", Hi Nessie!");
+}</code></pre>
+<p>This is way faster and more convenient, especially if we have to repeat the same stuff ten times, 100 times, or even more.</p>
+<p>Let's zoom in on the syntax of the <code class="language-javascript">for</code> loop. We set a variable before the loop: the <code class="language-javascript">i</code> counter. Next, the condition inside the brackets has three parts: <code class="language-javascript">(...;...;...)</code>. The initial value of the counter variable comes first; in our case, it equals <code class="language-javascript">1</code>. The second part is the condition in which the loop keeps working, which, in our case, is <code class="language-javascript">i &lt;= 5</code>. Finally, in the third part, we indicate how exactly the counter should change from one iteration to another. The <code class="language-javascript">i++</code> recording is the same as <code class="language-javascript">i = i + 1</code>, that is, the counter ranges from <code class="language-javascript">1</code> to <code class="language-javascript">5</code> with the step of <code class="language-javascript">1</code> at each iteration. Any part of the condition inside the brackets is optional and can be omitted.</p>
+<h5 id="infinite-loop">Infinite loop</h5>
+<p>An infinite loop is a loop whose execution never stops because there is no condition for exiting the loop (the second condition in the brackets). To write an infinite loop, skip the condition for exiting the loop to make a construction like this:</p>
+<pre><code class="language-javascript">for (i=0; ; i++) {
+    console.log(i);
+}</code></pre>
+<p>Or this:</p>
+<pre><code class="language-javascript">for (i=0; ;) {
+    console.log(i);
+}</code></pre>
+<p>Or even this:</p>
+<pre><code class="language-javascript">for (; ;) {
+    console.log('Hi!');
+}</code></pre>
+<p>Why is that? Since none of the conditions in brackets are mandatory, we can skip a few or even all of them. But since we cut the condition for exiting the loop, the loop becomes infinite.</p>
+<p>It's essential to exercise caution when using infinite loops in programming. As a result, your computer's memory will eventually become overloaded, leading to a system freeze. When this occurs, your only option is to reboot your computer in emergency mode. However, there are some situations where infinite loops are necessary — such as when programming games or microcontrollers. In these cases, using an infinite loop is a reasonable approach.</p>
+<h5 id="forin-loop">For...in loop</h5>
+<p>Let's examine another loop type related to the <code class="language-javascript">for</code> loop category, the <code class="language-javascript">for...in</code> loop:</p>
+<pre><code class="language-javascript">let animals = ['cat', 'dog', 'turtle'];
+
+for (i in animals) {
+  console.log(animals[i]);
+}</code></pre>
+<p>We get the following as the output:</p>
+<pre><code class="language-javascript">cat
+dog
+turtle</code></pre>
+<p>In this example, we created an array containing the names of animals. Next, we go through the indexes of each animal in the array and display the names of the animals, one per line.</p>
+<p> </p>
+<p></p><div class="alert alert-primary">
+<p>Note that the <code class="language-javascript">for...in</code> loop passes only through the object's enumerable properties, that is, by properties that can be counted.</p>
+<p></p></div>
+<p> </p>
+<h5 id="conclusion">Conclusion</h5>
+<p>Loops are crucial in programming as they allow developers to repeat the same code multiple times without writing it repeatedly. They save time and make the code more organized and efficient. We have learned about two types of loops: the <code class="language-javascript">for</code> loop and the <code class="language-javascript">for...in</code> loop. We have also discussed the importance of having a condition to exit a loop and the potential dangers of infinite loops. By mastering loops, programmers can write more powerful and sophisticated programs.</p>
+</div>

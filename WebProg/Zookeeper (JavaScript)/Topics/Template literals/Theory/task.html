@@ -1,0 +1,41 @@
+<div class="step-text">
+<p>If you ever tried to add variables to strings of text, you probably noticed that the resulting program looked difficult to read.</p>
+<p>Previously, we only used single quotes <code class="language-javascript">''</code> or double quotes <code class="language-javascript">""</code> to create a string. This led to various restrictions and inconveniences, so it's time we learn to manage strings without unnecessary complications.</p>
+<h5 id="using-template-literals" style="text-align: center;">Using template literals</h5>
+<p>Suppose we need to display a message about today's temperature in some city:</p>
+<pre><code class="language-no-highlight">Now, the temperature in ... is ... degrees Celsius.</code></pre>
+<p>Instead of <code class="language-javascript">...</code> we need to write certain values.</p>
+<p>We can do it this way:</p>
+<pre><code class="language-javascript">let city = "Paris";
+let temp = "24";
+
+console.log("Now, the temperature in " + city + " is " + temp + " degrees Celsius.");</code></pre>
+<p>Here we declare two variables, for example, <code class="language-javascript">city</code> and <code class="language-javascript">temp</code>, and further on build the result string using a sequence of concatenations. Of course, this code works correctly, but it is long, and we have to keep a close eye on gaps so that we don't accidentally get solid text in the output.</p>
+<p>JavaScript provides a more convenient way to manage strings: <strong>template literals</strong>. To put a value of a variable to a string, write the dollar sign <code class="language-javascript">$</code> before the variable's name, put it in curly brackets <code class="language-javascript">{}</code>, and enclose the string in reverse quotes <code class="language-javascript">` `</code> instead of double or single:</p>
+<pre><code class="language-javascript">let city = "Paris";
+let temp = "24";
+ 
+console.log(`Now, the temperature in ${city} is ${temp} degrees Celsius.`);</code></pre>
+<p>This code is more readable than the one with concatenations. You can run these scripts and see for yourself that they display the same message:</p>
+<pre><code class="language-no-highlight">Now, the temperature in Paris is 24 degrees Celsius.</code></pre>
+<h5 id="multi-line-strings" style="text-align: center;">Multi-line strings</h5>
+<p>Symbols of a new line are part of the template literals. Now you can quickly and effortlessly write a multi-line program. For example:</p>
+<pre><code class="language-javascript">console.log(`String text line 1
+String text line 2`);</code></pre>
+<p>The output of this code will be as follows:</p>
+<pre><code class="language-no-highlight">String text line 1
+String text line 2</code></pre>
+<p>This is quite handy because now there is no need to duplicate functions or puzzle over where to put line break characters (<code class="language-javascript">\n</code>).</p>
+<h5 id="syntactic-sugar" style="text-align: center;">Syntactic sugar</h5>
+<p>Thanks to the template literals, it is convenient not only to insert values of variables but also to insert whole expressions. Take a look at this example:</p>
+<pre><code class="language-javascript">let a = 1;
+let b = 2;
+console.log(`The sum of numbers ${a} and ${b} is not equal to ${ 10 * a + b }.`);
+// The sum of numbers 1 and 2 is not equal to 12.</code></pre>
+<p>Without the template literals, this code would look like this:</p>
+<pre><code class="language-javascript">let a = 1;
+let b = 2;
+console.log("The sum of numbers " + a + " and " + b + " is not equal to "+ (10 * a + b) + ".");
+// The sum of numbers 1 and 2 is not equal to 12.</code></pre>
+<p>Template literals are a truly useful innovation in ES6. It allows for flexible line management, easy creation of multi-line programs, and insertion of expressions into strings.</p>
+</div>

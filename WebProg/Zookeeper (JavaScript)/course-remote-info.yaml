@@ -1,0 +1,70 @@
+hyperskill_project:
+  id: 225
+  ide_files: https://cogniterra.org/media/attachments/lesson/26157/additional_files.json
+  is_template_based: true
+  use_ide: true
+update_date: "Thu, 01 Jan 1970 00:00:00 UTC"
+stages:
+  - id: 1128
+    step: 17230
+    is_completed: false
+  - id: 1129
+    step: 17231
+    is_completed: false
+  - id: 1130
+    step: 17232
+    is_completed: false
+  - id: 1131
+    step: 17233
+    is_completed: false
+topics:
+  0:
+    - title: Introduction to JavaScript
+      theory_id: 8016
+    - title: Writing first program
+      theory_id: 8154
+    - title: Multi-line programs
+      theory_id: 8162
+  1:
+    - title: Comments
+      theory_id: 8170
+    - title: JavaScript Code Style
+      theory_id: 9916
+    - title: Declaring variables
+      theory_id: 8186
+    - title: Strings and numbers
+      theory_id: 8194
+    - title: Arithmetic operators
+      theory_id: 8372
+    - title: Boolean and Logical Operators
+      theory_id: 8471
+    - title: Type Conversion
+      theory_id: 8380
+    - title: Comparison Operators
+      theory_id: 8580
+    - title: Conditional Operators
+      theory_id: 8889
+    - title: Introduction to String
+      theory_id: 17747
+    - title: Template literals
+      theory_id: 8731
+  2:
+    - title: Functions
+      theory_id: 8388
+    - title: Defining functions
+      theory_id: 24012
+    - title: Anonymous function
+      theory_id: 26924
+    - title: Arrow Functions
+      theory_id: 8455
+    - title: Array
+      theory_id: 16141
+    - title: Reading user's input
+      theory_id: 45180
+  3:
+    - title: Naming variables
+      theory_id: 8364
+    - title: Increment and Decrement
+      theory_id: 9102
+    - title: "Loops: while and do...while"
+      theory_id: 9128

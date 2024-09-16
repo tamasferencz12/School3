@@ -1,0 +1,14 @@
+Z:\Desktop\Eva\DocuStat\DocuStat\bin\Debug\net8.0\DocuStat.exe
+Z:\Desktop\Eva\DocuStat\DocuStat\bin\Debug\net8.0\DocuStat.deps.json
+Z:\Desktop\Eva\DocuStat\DocuStat\bin\Debug\net8.0\DocuStat.runtimeconfig.json
+Z:\Desktop\Eva\DocuStat\DocuStat\bin\Debug\net8.0\DocuStat.dll
+Z:\Desktop\Eva\DocuStat\DocuStat\bin\Debug\net8.0\DocuStat.pdb
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\DocuStat.GeneratedMSBuildEditorConfig.editorconfig
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\DocuStat.AssemblyInfoInputs.cache
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\DocuStat.AssemblyInfo.cs
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\DocuStat.csproj.CoreCompileInputs.cache
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\DocuStat.dll
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\refint\DocuStat.dll
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\DocuStat.pdb
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\DocuStat.genruntimeconfig.cache
+Z:\Desktop\Eva\DocuStat\DocuStat\obj\Debug\net8.0\ref\DocuStat.dll

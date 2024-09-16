@@ -22,7 +22,7 @@ boolExpr1 :: Bool
 boolExpr1 = False
 
 boolExpr2 :: Bool
-boolExpr2 = False
+boolExpr2 = (5 > 4) -- még egy megoldás: not False
 
 boolExpr3 :: Bool
 boolExpr3 = True
@@ -37,16 +37,16 @@ thirteen1 :: Integer
 thirteen1 = inc (triple (inc (inc (inc (inc 0)))))
 
 thirteen2 :: Integer
-thirteen2 = inc ((+) (triple(inc 0)) (triple (triple (inc(0)))))
+thirteen2 = inc ( triple (inc (triple (inc 0))))
 
 thirteen3 :: Integer
-thirteen3 = (+) (inc ((triple (inc 0)))) ((*) (triple (inc 0)) (triple (inc 0)))
+thirteen3 = inc ( inc (inc ( inc (triple (triple (inc 0))))))
 
 cmpRem5Rem7 :: Integer -> Bool
 cmpRem5Rem7 x =  x `mod` 5 > x `mod` 7
 
 foo :: Int -> Bool -> Bool 
-foo x boolean = if x > 0 then not boolean else boolean
+foo x boolean = ( x > 0 && not boolean) || ( x <= 0 && boolean)
 
 bar :: Bool -> Int -> Bool
 bar boolean x = foo x boolean

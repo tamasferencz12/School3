@@ -1,0 +1,75 @@
+<div class="step-text">
+<p>Along with numbers, <strong>strings</strong> are used all the time in Javascript programs. So you need to know what they are and how they work. Strings are pieces of textual data, and in this topic you'll see how to store them, get their length, perform operations with them, and more.</p>
+<h5 id="what-is-a-string">What is a string?</h5>
+<p>Let's start by looking at what textual data means in this case. A string represents a sequence of characters. Not just letters but also digits, spaces, underscores, dashes, and everything else you can see on your keyboard. So, how can you create a variable to store this data? You might be thinking it can be done like this:</p>
+<pre><code class="language-javascript">let text = Hello, World!</code></pre>
+<p>But unfortunately, that's not correct. You need to use <strong>quotes</strong> so that Javascript understands what's going on when you try to assign text to a variable:</p>
+<pre><code class="language-javascript">let text = 'Hello, World!';</code></pre>
+<p>There we go! You can also use <strong>double quotes</strong> instead of single quotes, and <strong>backticks</strong> if the text contains multiple lines:</p>
+<pre><code class="language-javascript">let text1 = 'Hello, World!';
+let text2 = "How are you?";
+let text3 = `*One year later*`;
+let text4 = `Hello, World.
+We haven't talked for a while. I hope you are fine.
+Sincerely yours, Hyperskill`;</code></pre>
+<p>This is how you store a piece of text, and this is what you call a string. By the way, if it's necessary to include quote marks/apostrophes in a string, you can insert a <strong>backslash</strong> before them so that JavaScript doesn't think it's a closing quote:</p>
+<pre><code class="language-javascript">let mystring = 'I\'m here';
+console.log(mystring); // I'm here</code></pre>
+<p>Alternatively, you can use double quotes to wrap a string containing single quotes and vice versa, as you can see in the following examples:</p>
+<pre><code class="language-javascript">let myString = "I'm here";
+console.log(myString); // I'm here
+
+let yourString = 'The book I read said, "Dr. Almanaco was a great astrologer."';
+console.log(yourString); // The book I read said, "Dr. Almanaco was a great astrologer."</code></pre>
+<h5 id="string-length">String length</h5>
+<p>In JavaScript, <code class="language-javascript">length</code> is a string <strong>property</strong> that enables you to find the length of the given string. It's used with various JavaScript <strong>methods</strong> that you will study later, and it's important to remember that <code class="language-javascript">length</code> is a property, not a method. Also, keep in mind that if the string is empty, the <code class="language-javascript">length</code> property will return <code class="language-javascript">0</code>. Here's a quick example:</p>
+<pre><code class="language-javascript">let mystring = 'Hello, World!';
+console.log(mystring.length); // 13</code></pre>
+<p></p><div class="alert alert-primary">Everything between the outer quotes of a string is counted when calculating its length. This includes spaces, numbers, and special characters.</div><p></p>
+<h5 id="operations-with-strings">Operations with strings</h5>
+<p>You might be surprised to discover that you can perform various operations with strings using mathematical operators. However, the result of some of these operations may not be what you would expect. Here's a list of them:</p>
+<ul>
+<li>Summing two strings — this forms a new string by 'gluing' the original strings together. It's known as <strong>concatenation</strong>:
+
+	<pre><code class="language-javascript">let mystring = 'Hello, ' + 'World!';
+console.log(mystring); // Hello, World!</code></pre>
+</li>
+<li>Adding a string and a number — this also creates a new string. Despite the <strong>datatypes</strong> being different, JavaScript will automatically <strong>cast</strong> a number to a string and concatenate them:
+	<pre><code class="language-javascript">console.log('21' + 21); // '2121'
+console.log(46 + '7'); // '467'
+console.log(12.34 + '56'); // '12.3456'</code></pre>
+</li>
+</ul>
+<p>If you use one of the other mathematical operators (<code class="language-javascript">-</code>, <code class="language-javascript">*</code>, or <code class="language-javascript">/</code>), JavaScript will attempt to convert everything to a number before performing the calculation. Take a look:</p>
+<ul>
+<li>The below examples will all work because it's possible to convert the strings into numbers:
+	<pre><code class="language-javascript">console.log('12' - 10); // 2
+console.log('90.10' - 10); // 80.10
+console.log('12' * 12); // 144
+console.log('12' * '12'); // 144
+console.log('12' / '12'); // 1</code></pre>
+</li>
+<li>However, because JavaScript can't convert some of the characters into numbers, the result of the following operations will all be <code class="language-javascript">NaN</code>. This stands for <strong>Not A Number</strong> — a <code class="language-javascript">NaN</code> has the datatype number but is not a real number:</li>
+<li>
+<pre><code class="language-javascript">console.log('we' - 2); // NaN
+console.log(':(' * 2); // NaN
+console.log('&amp;9' / 2); // NaN</code></pre>
+</li>
+</ul>
+<h5 id="expressions-within-a-string">Expressions within a string</h5>
+<p>As you've seen, it's possible to combine strings and numbers using the <code class="language-javascript">+</code> operator, but there's another way to do this. Remember backticks? As well as allowing you to create a multi-line string, they also make it possible to insert a whole expression into a string. Under the hood, the result of the expression will be calculated, transformed into a string, and concatenated with the rest of the string's characters. Take a look at the below example:</p>
+<pre><code class="language-javascript">let a = 20;
+let b = 5;
+let result = `The result of ${a} + ${b} is ${a + b}`;
+
+console.log(result); // The result of 20 + 5 is 25</code></pre>
+<p>Nice and easy! Notice that this is only possible when using backticks, not regular quotes. These are called <strong>t</strong><strong>emplate literals,</strong> and we'll take a closer look at them in a later topic.</p>
+<h5 id="summary">Summary</h5>
+<p>In this topic, you learned that strings allow you to store textual data in JavaScript. You've seen how to get a string's length, perform operations with strings and numbers, and use an expression within a string. The way strings behave when used with mathematical operators can sometimes be confusing. So, for now, try to remember that:<strong> </strong></p>
+<ul>
+<li>string <code class="language-javascript">+</code> string = string, </li>
+<li>string <code class="language-javascript">+</code> number = string,</li>
+<li>string <code class="language-javascript">-</code> number = number.</li>
+</ul>
+<p>In future topics, you'll learn even more about the power of strings and how they can be used.</p>
+</div>
