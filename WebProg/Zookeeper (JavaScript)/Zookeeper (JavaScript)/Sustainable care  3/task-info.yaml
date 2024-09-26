@@ -7,7 +7,10 @@ files:
   - name: tests.py
     visible: false
     learner_created: false
-feedback_link: https://hyperskill.org/projects/225/stages/1131/implement#comment
+feedback_link: https://hyperskill.org/learn/step/17233#comment
 check_profile: hyperskill_node_javascript
-status: Unchecked
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Mon, 16 Sep 2024 17:51:19 UTC"
 record: -1

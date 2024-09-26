@@ -1,3 +1,7 @@
 content:
   - Introduction to String
   - Template literals
+  - Basic string methods
+  - String Compare
+  - String transforming
+  - Introduction to Regexp

@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: pment is evolvin
+  - text: ment is evolving
+  - text: pment is evolving
+  - text: IndexError
+files:
+  - name: main.js
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/17759#comment
+status: Solved
+record: -1
+local_check: false

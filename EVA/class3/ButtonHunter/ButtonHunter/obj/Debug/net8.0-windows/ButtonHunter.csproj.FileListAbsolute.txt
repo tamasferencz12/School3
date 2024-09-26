@@ -1,0 +1,16 @@
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\bin\Debug\net8.0-windows\ButtonHunter.exe
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\bin\Debug\net8.0-windows\ButtonHunter.deps.json
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\bin\Debug\net8.0-windows\ButtonHunter.runtimeconfig.json
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\bin\Debug\net8.0-windows\ButtonHunter.dll
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\bin\Debug\net8.0-windows\ButtonHunter.pdb
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.Form1.resources
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.csproj.GenerateResource.cache
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.GeneratedMSBuildEditorConfig.editorconfig
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.AssemblyInfoInputs.cache
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.AssemblyInfo.cs
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.csproj.CoreCompileInputs.cache
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.dll
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\refint\ButtonHunter.dll
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.pdb
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ButtonHunter.genruntimeconfig.cache
+Z:\Desktop\Eva\ButtonHunter\ButtonHunter\obj\Debug\net8.0-windows\ref\ButtonHunter.dll

@@ -1,0 +1,16 @@
+Z:\Desktop\Eva\QuitButton\QuitButton\bin\Debug\net8.0-windows\QuitButton.exe
+Z:\Desktop\Eva\QuitButton\QuitButton\bin\Debug\net8.0-windows\QuitButton.deps.json
+Z:\Desktop\Eva\QuitButton\QuitButton\bin\Debug\net8.0-windows\QuitButton.runtimeconfig.json
+Z:\Desktop\Eva\QuitButton\QuitButton\bin\Debug\net8.0-windows\QuitButton.dll
+Z:\Desktop\Eva\QuitButton\QuitButton\bin\Debug\net8.0-windows\QuitButton.pdb
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.Form1.resources
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.csproj.GenerateResource.cache
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.GeneratedMSBuildEditorConfig.editorconfig
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.AssemblyInfoInputs.cache
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.AssemblyInfo.cs
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.csproj.CoreCompileInputs.cache
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.dll
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\refint\QuitButton.dll
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.pdb
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\QuitButton.genruntimeconfig.cache
+Z:\Desktop\Eva\QuitButton\QuitButton\obj\Debug\net8.0-windows\ref\QuitButton.dll

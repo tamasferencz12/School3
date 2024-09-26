@@ -1,0 +1,23 @@
+type: matching
+captions:
+  - "console.log(string.slice(0, -1));"
+  - "console.log(string.slice(0, 0));"
+  - "console.log(string.slice(10, -1));"
+  - "console.log(string.slice(1, -10));"
+options:
+  - Empty string
+  - "Fred fed Ted bread, &amp; Ted fed Fred brea"
+  - "red fed Ted bread, &amp; Ted fed"
+  - "ed bread, &amp; Ted fed Fred brea"
+files:
+  - name: main.js
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/17760#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3

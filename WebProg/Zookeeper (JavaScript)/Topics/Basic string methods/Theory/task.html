@@ -1,0 +1,53 @@
+<div class="step-text">
+<p>JavaScript provides many useful methods for string objects that help solve various problems. In this topic, you'll learn about basic string methods of JavaScript and how to obtain the desired results by performing various methods on strings.</p><h5 id="the-slice-method">The slice method</h5><p>In JavaScript, the <code class="language-javascript">slice()</code> method is used to take out/extract a part of the string and return a new string. It accepts the start index and end index as parameters to specify what part of the string is to be extracted. The slice method does not change the original string and hence returns a new string. The syntax of the <code class="language-javascript">slice()</code> method is the following:</p><pre><code class="language-javascript">string.slice(start, end);</code></pre><p>The above syntax consists of the following:</p><ul><li><p><strong>string, </strong>the<strong> </strong>string on which the slice method is used to extract a part of the string.</p></li><li><p><strong>start, </strong>starting index from which the slice method starts to extract the string.</p></li><li><p><strong>end (optional), </strong>ending index up to which the slice method extracts the string.</p></li></ul><p>Consider an example in which you need to extract the second-level domain. Typically, a second-level domain comes after "@" in an email. For example, in "abc@xyz.com" a second-level domain is "xyz".</p><pre><code class="language-javascript">let email = "hyperskill@gmail.com";
+email.slice(11, 16); // 'gmail'
+
+let text = "She sells seashells on the sea shore.";
+text.slice(1, 4); 'he '
+
+let str = "I am learning string methods."
+str.slice(-8); // 'methods.'
+
+let newStr = "JavaScript";
+newStr.slice(-6, -1); // 'Scrip'</code></pre><p> </p><p></p><div class="alert alert-primary"><p>The negative index, i.e -1, in the parameter indicates that the extraction of the string starts from the end of the string.</p></div><p></p><p> </p><h5 id="the-split-method">The split method</h5><p>The <code class="language-javascript">split()</code> method splits the string into an array of substrings and returns an array of substrings. This method accepts a parameter and based on this parameter the string is split into substrings and a new array is formed. The syntax of the <code class="language-javascript">split()</code> method looks like this:</p><pre><code class="language-javascript">string.split(separator, limit);</code></pre><p>The above syntax consists of the following:</p><ul><li><p><strong>string, </strong>a string to which the split method is applied.</p></li><li><p><strong>separator (optional). </strong>It can be a simple string or a regular expression. The separator specifies the point from which separation takes place. If the separator is not present, then the entire string becomes an element of a single array. If the separator has multiple characters, then the sequence of the entire character is found to split.</p></li><li><p><strong>limit (optional), </strong>a non-negative integer that specifies the number of splits. If a limit is passed to the split method, it will split the string into the specified number of substrings. After the number substrings reaches the limit, the method stops.</p></li></ul><p>Let's take a look at an example to better understand the <code class="language-javascript">split()</code> method.</p><pre><code class="language-javascript">let numbers = "123,456,789";
+
+// separator is ","
+let splitNumbers = numbers.split(",");  
+console.log(splitNumbers); // [ '123', '456', '789' ]
+
+
+let text = "jetbrains@gmail.com";
+
+// separator is "@"
+let splitText = text.split("@"); 
+console.log(splitText); // [ 'jetbrains', 'gmail.com' ]</code></pre><p>As seen in the examples above, the string gets split where the separator occurs and returns an array of strings. Let's see more examples in which limit is also passed to the split method.</p><pre><code class="language-javascript">let languages = "JavaScript, Java, C++, C, Python, Kotlin";
+
+// separator is "," and limit is "3"
+let splitLang = languages.split(",", 3); 
+console.log(splitLang); // [ 'JavaScript', ' Java', ' C++' ]
+
+
+let text = "JetBrains";
+
+// separator is empty string
+let textSplit = text.split("", 5); 
+console.log(textSplit); // ['J', 'e', 't', 'B', 'r']</code></pre><p>Let's include some Regexp in the separator and see how the split method works.</p><pre><code class="language-javascript">let numbers = "2, 4, 6, 8, 10";
+
+// separator is a regexp 
+let splitNumbers = numbers.split(/\s*,\s*/);
+console.log(splitNumbers); // ['2', '4', '6', '8', '10']
+
+
+let text = "box, beatbox, boxer, boxing, postbox, box-sizing";
+
+// separator is a regexp and limit is "4"
+let regexp = /\bbox/
+let splitText = text.split(regexp, 4);
+console.log(splitText); // [ '', ', beatbox, ', 'er, ', 'ing, postbox, ' ]</code></pre><p>The above example shows that the numbers are split and the elements are stored in an array. In another example, <code class="language-javascript">regexp</code> is passed as a parameter to the split method and the limit is <code class="language-javascript">"4"</code>. Here, the strings, which have <strong>box </strong>at the start, are split but only 4 splits will occur as the limit passed to the split method is<strong> 4</strong>.</p><h5 id="the-replace-method">The replace method</h5><p>The JavaScript <code class="language-javascript">replace()</code> method is used to replace a part of the string with the new substring. This method returns the new string after replacing the part of the string or the whole string itself. The <code class="language-javascript">replace()</code> method accepts a <strong>regexp</strong> and <strong>replacement string</strong> as arguments, searches for the specified regexp in the given string, and replaces that part with the replacement string if the match occurs. The syntax of the <code class="language-javascript">replace()</code> method looks like this:</p><pre><code class="language-javascript">string.replace(originalStr, newStr);</code></pre><p>The above syntax consists of the following:</p><ul><li><p><strong>string, </strong>a string on which the replace method is applied and in which some part of the string is to be replaced.</p></li><li><p><strong>originalStr.</strong> It is searched on the given string and replaced by <code class="language-javascript">newStr</code>.</p></li><li><p><strong>newStr, </strong>the string which replaces the <code class="language-javascript">originalStr</code>.</p></li></ul><pre><code class="language-javascript">let text = "Captain Red has a red ship and a red parrot.";
+
+text.replace(/red/, "blue"); // 'Captain Red has a blue ship and a red parrot.'
+
+text.replace(/red/g, "blue"); // 'Captain Red has a blue ship and a blue parrot.'
+
+text.replace(/red/gi, "blue"); // 'Captain blue has a blue ship and a blue parrot.'</code></pre><p>If the <strong>regexp</strong> has the <code class="language-javascript">g</code> flag set, the method replaces all the matches in the string with the replacement string. Otherwise, it replaces only the first match it finds. If the first argument to the <code class="language-javascript">replace()</code> method is a string rather than regexp, the method searches for the given string instead of matching it with a regexp.</p><p>Read more on this topic in <a href="https://hyperskill.org/blog/post/string-along-with-javascript-strings" rel="noopener noreferrer nofollow" target="_blank">String Along with JavaScript Strings</a> on Hyperskill Blog.</p><h5 id="conclusion">Conclusion</h5><p>In this topic, you've learned how to work with different string methods in JavaScript. You now know how to extract the desired part of the string using the <code class="language-javascript">slice()</code> method. To split the string into substrings you can use the <code class="language-javascript">split()</code> method with a separator and a limit. You've also learned to replace the string when the regexp is passed as an argument to the <code class="language-javascript">replace()</code> method.</p>
+</div>

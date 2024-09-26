@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\Tombola.csproj": {}
+    "/Users/tamas/School3/EVA/class1/Tombola.Buggy/Tombola.csproj": {}
   },
   "projects": {
-    "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\Tombola.csproj": {
+    "/Users/tamas/School3/EVA/class1/Tombola.Buggy/Tombola.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\Tombola.csproj",
+        "projectUniqueName": "/Users/tamas/School3/EVA/class1/Tombola.Buggy/Tombola.csproj",
         "projectName": "Tombola",
-        "projectPath": "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\Tombola.csproj",
-        "packagesPath": "C:\\Users\\tamas\\.nuget\\packages\\",
-        "outputPath": "C:\\Mac\\Home\\Documents\\School3\\EVA\\class1\\Tombola.Buggy\\obj\\",
+        "projectPath": "/Users/tamas/School3/EVA/class1/Tombola.Buggy/Tombola.csproj",
+        "packagesPath": "/Users/tamas/.nuget/packages/",
+        "outputPath": "/Users/tamas/School3/EVA/class1/Tombola.Buggy/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tamas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/tamas/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: <code>match()</code>
+  - text: <code>search()</code>
+  - text: <code>indexOf()</code>
+  - text: <code>localeCompare()</code>
+files:
+  - name: main.js
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/18298#comment
+status: Solved
+record: -1
+local_check: false
