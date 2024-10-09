@@ -1,0 +1,16 @@
+1.1 Create GameModel.cs
+1.2 Write GameModel code
+1.3 Set/write variables and poperties (Constructors)
+1.4 Set Events like "public event EventHandler? GameOver"
+1.5 Write methods
+
+2.1 Create form
+2.2 Set private Gamemodel and other private fields
+2.3 Set constructor for form
+    Sign on event handlers in constructor
+    Generate game table
+    Call new game method
+2.4 Write methods
+
+3.1 Make form view
+3.2 Rename/readjust elements for UI

@@ -1,0 +1,55 @@
+body {
+  text-align: center;
+  justify-content: center;
+}
+
+table {
+  background-color: rgb(255, 247, 237);
+  border: 2px solid black;
+  text-align: center;
+}
+th {
+  width: 90vw;
+  height: 10vh;
+  font-size: 2.5rem;
+}
+
+td {
+  border: 2px solid black;
+  width: 90vw;
+  height: 10vh;
+  font-size: 1.5rem;
+}
+
+.title {
+  background-color: rgb(128, 128, 128);
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.megnezve {
+  background-color: black;
+  transition: all 0.5s ease-in-out;
+}
+
+ul {
+  background-color: rgb(255, 247, 237);
+  width: max-content;
+  border: 2px solid black;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+li {
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  margin: 2rem;
+  border: 2px solid black;
+}
+.ul-title {
+  font-size: 2rem;
+  border: none;
+}
+
