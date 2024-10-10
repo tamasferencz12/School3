@@ -41,7 +41,6 @@ Thumbs.db
 *.json
 *.cache
 *.svg
-*.js
 *.ts
 *.png
 *.d
