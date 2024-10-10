@@ -185,7 +185,6 @@ infixr 5 +++
 concat' :: [[a]] -> [a]
 concat' [] = []
 concat' (xs : xss) = xs +++ concat' xss
-
 -- Definiáld a slowReverse függvényt, amely egy lista elemeinek sorrendjét megfordítja egy naív módon.
 -- A listáról feltehető, hogy véges.
 slowReverse :: [a] -> [a]
@@ -202,8 +201,8 @@ Nyilván nem csak listán lehet rekurziót használni, de a félévben azzal fog
 
 -- Feladatok:
 -- Definiáld a repeat' függvényt, amely egy adott elemet a végtelenségig ismétel.
-repeat' :: undefined
-repeat' = undefined
+repeat' :: a -> [a]
+repeat' x = x : repeat' x
 
 -- Definiáld a last' függvényt, amely visszaadja egy lista utolsó elemét.
 -- A listáról feltehető, hogy véges.
@@ -212,21 +211,26 @@ last' [x] = x
 last' (x : xs) = last' xs
 
 -- Definiáld az init' függvényt, amely kitörli egy lista utolsó elemét; az elejét tartja meg.
-init' :: undefined
-init' = undefined
+init' :: [a] -> [a]
+init' [x] = [] 
+init' (x:xs) = x : init' xs
 
 -- Definiáld a zip' függvényt, amely két lista elemin párhuzamosan haladva összeteszi azokat rendezett párokba.
 -- A függvény a rövidebb lista hosszáig működik.
 -- (Ez a továbbiakban azt jelenti, hogy ha valamelyik lista több elemű, a fennmaradó elemeket abból a listából eldobjuk.)
 zip' :: [első] -> [második] -> [(első,második)]
-zip' = undefined
+zip' [][] = []
+zip' [](x:xs) = []
+zip' (x:xs) [] = []
+zip' (x:xs) (y:ys) = (x, y) : zip' xs ys
 
 -- Definiáld a nub' függvényt, amely egy lista ismétlődő elemeit törli megtartva csak az elsőket.
 -- nub' [1,2,1,3,5,3,2,2,3,3,1,1,2,4,4] == [1,2,3,5,4]
 -- nub' [2,1,2,2] == [2,1]
 -- nub' [1,2,2,2] == [1,2]
-nub' :: undefined
-nub' = undefined
+nub' :: Eq a => [a] -> [a]
+nub' [] = []
+nub' (x:xs) = x : nub' [y | y <- xs, x /= y]
 
 ----------------
 -- Számozás
@@ -242,5 +246,5 @@ az adott feladatnak megfelelően fel lehet használni a számokat, számozott sz
 
 -- Feladat:
 -- Számozzuk meg egy szövegnek az egyes szavait 1-től kezdve. Az eredmény legyen egy rendezett párokból álló lista, az első komponens a szó száma, a második maga a szó.
-numberWords :: undefined
-numberWords = undefined
+--numberWords ::(Num a, Enum a) => String -> [(a, String)]
+--numberWords xs = zip' [1..] [words xs]
