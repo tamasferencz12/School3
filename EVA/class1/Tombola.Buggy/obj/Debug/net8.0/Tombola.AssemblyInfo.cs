@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Eötvös Loránd University (ELTE) 2023")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aae1090eafd8dfdae5239541517d985fb29f7707")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b718cc320e9843f82383f29e6b5741754ebcb68")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tombola")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tombola")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
