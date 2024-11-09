@@ -20,15 +20,15 @@ Minimálisan teljesítendő (8 pont)
 - [x] Menü: A menüből elérhető a játékszabály leírása. (1 pont)
 - [x] Játéktér: A játéktéren megjelenik a játékos neve, és elindul a megjelenített időzítő (1 pont)
 - [x] Játéktér: A játéktéren megjelenik a nehézségi szintnek megfelelő pályák közül egy véletlenszerűen kiválasztott pálya, és a rajta lévő összes elemtípus (3 pont)
-- [ ] Lehelyezés: A pályán lévő mezőkre le tudom helyezni a különböző típusú elemeket (2 pont).
+- [x] Lehelyezés: A pályán lévő mezőkre le tudom helyezni a különböző típusú elemeket (2 pont).
 
 Alap feladatok (12 pont)
 
-- [ ] Lehelyezés: Az elemeket szabályosan tudom lehelyezni. (Hídon csak egyenesen, Hegynél csak 90°-ban, Oázisra pedig nem tudunk lehelyezni semmit, üres mezőre bármilyet) (4 pont)
+- [x] Lehelyezés: Az elemeket szabályosan tudom lehelyezni. (Hídon csak egyenesen, Hegynél csak 90°-ban, Oázisra pedig nem tudunk lehelyezni semmit, üres mezőre bármilyet) (4 pont)
 - [ ] Ellenőrzés: A játék ellenőrzi, hogy megoldottuk-e a feladványt. Tehát azt, hogy: minden mezőt, amit lehet csak egyszer érint; körbeér az útvonal; minden mezőből át lehet jutni a megfelelő szomszédos mezőbe; mindenhol a megfelelő elem szerepel (4 pont)
 - [ ] Játék vége: A játék végén látjuk, hogy mennyi idő alatt teljesítettük a pályát. (1 pont)
 - [ ] Toplista: A játék végén megjelenik a toplista, hogy az adott nehézségű pályát kinek mennyi idő alatt sikerült teljesítenie (2 pont)
-- [ ] Egyéb: igényes kinézet és kódszervezés (1 pont)
+- [x] Egyéb: igényes kinézet és kódszervezés (1 pont)
 
 Plusz feladatok (5 pont)
 

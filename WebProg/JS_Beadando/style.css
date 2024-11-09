@@ -266,7 +266,7 @@ li {
   width: 50%;
   height: auto;
   margin-right: 2%;
-  border: solid 1.5rem #8f7650;
+  border: solid 1rem #8f7650;
   border-radius: 5%;
 }
 
@@ -314,4 +314,3 @@ h3 {
   margin: 10px auto;
   opacity: 0.7;
 }
-
