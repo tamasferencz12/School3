@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Railways</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-container visible" id="main-container">
+      <div class="input-section">
+        <input
+          type="text"
+          class="name-input"
+          id="name-input"
+          placeholder="Add meg a neved!"
+        />
+        <div class="menu-section">
+          <div class="difficulty-select">
+            <h1 class="difficulty-title">Állítsd be a nehézséget!</h1>
+            <div class="difficulty-options">
+              <div class="difficulty-level">5 x 5</div>
+              <div class="difficulty-level">7 x 7</div>
+            </div>
+            <div class="difficulty-labels">
+              <h1 class="difficulty-label">Könnyű</h1>
+              <h1 class="difficulty-label">Nehéz</h1>
+            </div>
+          </div>
+          <div class="button-group">
+            <button class="btn btn-description">Leírás</button>
+            <button class="btn btn-start">Játék indítása</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="instructions hidden" id="instructions">
+      <div class="instructions-leftside">
+        <h1 class="instructions-h1">A királyság vasúthálózata</h1>
+        <button class="btn instructions-btn" id="instructions-btn">Menu</button>
+      </div>
+
+      <ul>
+        <li>
+          <strong>Feladat:</strong> Nevenincs király körvasutat épít, segítsen a
+          tervezésben!
+        </li>
+        <li>
+          <strong>Játék leírás:</strong>
+          <ul>
+            <li>A játék célja: összefüggő körvasútvonal kialakítása.</li>
+            <li>
+              Térképen található mezők:
+              <ul>
+                <li>Üres mező - szabad mozgás.</li>
+                <li>Híd mező - csak egy irányban lehet építeni.</li>
+                <li>Hegy mező - csak 90°-ban fordulhat.</li>
+                <li>Oázis mező - nem lehet építeni.</li>
+              </ul>
+            </li>
+            <li class="important">
+              Fontos: a vasúthálózat nem keresztezheti önmagát!
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Játék indítása:</strong> Adja meg a nevet és a pálya
+          nehézségét (Könnyű vagy Nehéz).
+        </li>
+        <li>
+          <strong>Játék vége:</strong> A játék akkor ér véget, ha a feladvány
+          helyes megoldása elkészül.
+        </li>
+      </ul>
+    </div>
+
+    <div class="game-board hidden" id="game-board">
+      <div class="game-info">
+        <h2 class="game-text">ÚTVONALTERVEZŐ:</h2>
+        <h3 id="player-name">FURFANG</h3>
+        <hr class="separator-line" />
+        <h2>ELTELT IDŐ:</h2>
+        <h3 id="timer">00:00</h3>
+      </div>
+      <div class="game-grid" id="game-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
