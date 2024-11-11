@@ -231,6 +231,8 @@ winnerMenuButton.addEventListener("click", () => {
   document.querySelector('#winner-menu-button').classList.add('hidden');
   mainMenuContainer.classList.remove("hidden");
   mainMenuContainer.classList.add("visible");
+
+  clearInterval();
 });
 
 descriptionButton.addEventListener("click", () => {
