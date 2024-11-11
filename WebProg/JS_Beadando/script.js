@@ -213,6 +213,8 @@ let selectedDifficulty = null;
 let playerName = null;
 let directionMatrix = [];
 let startedTime = Date.now();
+let seconds = 0;
+let boardSize = 0;
 
 const cell = new Cell(cellImages);
 const gridLayout = new GridLayout();
@@ -225,12 +227,7 @@ difficultyButtons.forEach((button) => {
 });
 
 winnerMenuButton.addEventListener("click", () => {
-  document.querySelector('.game-winner').classList.remove('visible');
-  document.querySelector('.game-winner').classList.add('hidden');
-  document.querySelector('#winner-menu-button').classList.remove('visible');
-  document.querySelector('#winner-menu-button').classList.add('hidden');
-  mainMenuContainer.classList.remove("hidden");
-  mainMenuContainer.classList.add("visible");
+  location.reload();
 });
 
 descriptionButton.addEventListener("click", () => {
@@ -269,7 +266,7 @@ function startGame() {
   }
   nameInputText.textContent = playerName.toUpperCase();
 
-  let seconds = 0;
+  seconds = 0;
   timerInterval = setInterval(() => {
     seconds++;
     const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -284,6 +281,7 @@ function startGame() {
 function generateGrid(difficulty) {
   gameGrid.innerHTML = "";
   const size = difficulty === "5 x 5" ? 5 : 7;
+  boardSize = size;
 
   gameGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   gameGrid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -309,8 +307,6 @@ function generateGrid(difficulty) {
 
     cell.style.backgroundSize = 'cover';
     cell.style.backgroundPosition = 'center';
-    cell.dataset.row = row;
-    cell.dataset.col = col;
     cell.addEventListener("click", () => updateCellImages(cell, row, col));
     gameGrid.appendChild(cell);
   });
@@ -408,9 +404,39 @@ function checkState(matrix, startX, startY) {
     document.querySelector('.game-board').classList.add('hidden');
     document.querySelector('#winner-menu-button').classList.remove('hidden');
     document.querySelector('#winner-menu-button').classList.add('visible');
-  }
-  function formatTime(time) {
-    return time < 10 ? `0${time}` : time;
+
+    updateTopScores(playerName, elapsed, boardSize);
+    document.addEventListener("DOMContentLoaded", displayTopScores);
   }
 }
-//#endregion 
+function formatTime(time) {
+  return time < 10 ? `0${time}` : time;
+}
+//#endregion
+
+//#region Top Score
+function updateTopScores(playerName, time, boardSize) {
+  let topScores = JSON.parse(localStorage.getItem("topScores")) || [];
+
+  topScores.push({ name: playerName, time: time, boardSize: boardSize });
+  topScores.sort((a, b) => a.time - b.time);
+  topScores = topScores.slice(0, 5);
+
+  localStorage.setItem("topScores", JSON.stringify(topScores));
+
+  displayTopScores();
+}
+
+function displayTopScores() {
+  const scoreList = document.querySelector("#score-list");
+  scoreList.innerHTML = "";
+
+  const topScores = JSON.parse(localStorage.getItem("topScores")) || [];
+
+  topScores.forEach((score, index) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${index + 1}. ${score.name} - ${score.boardSize}: ${formatTime(Math.floor(score.time / 60000))}:${formatTime(Math.floor(score.time / 1000) % 60)}`;
+    scoreList.appendChild(listItem);
+  });
+}
+//#endregion

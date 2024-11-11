@@ -337,3 +337,33 @@ h3 {
   align-items: center;
 }
 
+.top-scores {
+  margin: 1rem;
+  padding: 1.5rem;
+  width: 35%;
+  height: 40vh;
+  border: solid 2px #515269;
+  background-color: #d8bf87;
+}
+
+.top-scores-h {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#score-list {
+  list-style-type: none;
+  padding: 0;
+  justify-items: center;
+  align-items: center;
+}
+
+#score-list li {
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 20vw;
+  background-color: #515269;
+}
