@@ -29,6 +29,7 @@ const cellImages = [
 //#region update cell image
 function updateCellImages(element) {
   const currentImage = element.style.backgroundImage;
+  console.log("Element", element);
 
   switch (true) {
     case currentImage.includes('mountainDOWNLEFT') || currentImage.includes('mountain_railDOWNLEFT'):
