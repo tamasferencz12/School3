@@ -212,7 +212,7 @@ const winnerMenuButton = document.querySelector('#winner-menu-button');
 let selectedDifficulty = null;
 let playerName = null;
 let directionMatrix = [];
-let startedTime = Date.now();
+let startedTime;
 let seconds = 0;
 let boardSize = 0;
 
@@ -244,6 +244,8 @@ startButton.addEventListener("click", () => {
   mainMenuContainer.classList.add("hidden");
   gameBoard.classList.remove("hidden");
   gameBoard.classList.add("visible");
+  startGame();
+  startedTime = Date.now()
 });
 
 menuButton.addEventListener("click", () => {
@@ -252,8 +254,6 @@ menuButton.addEventListener("click", () => {
   mainMenuContainer.classList.remove("hidden");
   mainMenuContainer.classList.add("visible");
 });
-
-startButton.addEventListener("click", startGame);
 //#endregion
 
 //#region START GAME

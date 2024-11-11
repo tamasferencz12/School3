@@ -341,7 +341,7 @@ h3 {
   margin: 1rem;
   padding: 1.5rem;
   width: 35%;
-  height: 40vh;
+  height: auto;
   border: solid 2px #515269;
   background-color: #d8bf87;
 }
@@ -367,3 +367,4 @@ h3 {
   width: 20vw;
   background-color: #515269;
 }
+
