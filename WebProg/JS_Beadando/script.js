@@ -39,7 +39,6 @@ const railDirections = {
 //#region update cell image
 function updateCellImages(element, row, col) {
   const currentImage = element.style.backgroundImage;
-  console.log("Element", element);
 
   switch (true) {
     case currentImage.includes('mountainDOWNLEFT') || currentImage.includes('mountain_railDOWNLEFT'):
@@ -207,6 +206,7 @@ const gameBoard = document.querySelector("#game-board");
 const menuButton = document.querySelector("#instructions-btn");
 const gameGrid = document.querySelector("#game-grid");
 const timer = document.querySelector("#timer");
+const winnerMenuButton = document.querySelector('#winner-menu-button');
 //#endregion
 
 let selectedDifficulty = null;
@@ -222,6 +222,15 @@ difficultyButtons.forEach((button) => {
   button.addEventListener("click", () => {
     selectedDifficulty = button.textContent;
   });
+});
+
+winnerMenuButton.addEventListener("click", () => {
+  document.querySelector('.game-winner').classList.remove('visible');
+  document.querySelector('.game-winner').classList.add('hidden');
+  document.querySelector('#winner-menu-button').classList.remove('visible');
+  document.querySelector('#winner-menu-button').classList.add('hidden');
+  mainMenuContainer.classList.remove("hidden");
+  mainMenuContainer.classList.add("visible");
 });
 
 descriptionButton.addEventListener("click", () => {
@@ -391,9 +400,14 @@ function checkState(matrix, startX, startY) {
     const minutes = Math.floor(elapsed / 60000);
     document.querySelector('.game-winner #timer').innerText = `${formatTime(minutes)}:${formatTime(seconds)}`;
 
+    document.querySelector('.main-container').classList.remove('visible');
+    document.querySelector('.main-container').classList.add('hidden');
     document.querySelector('.game-winner').classList.remove('hidden');
+    document.querySelector('.game-winner').classList.add('visible');
     document.querySelector('.game-board').classList.remove('visible');
     document.querySelector('.game-board').classList.add('hidden');
+    document.querySelector('#winner-menu-button').classList.remove('hidden');
+    document.querySelector('#winner-menu-button').classList.add('visible');
   }
   function formatTime(time) {
     return time < 10 ? `0${time}` : time;
