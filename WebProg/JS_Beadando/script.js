@@ -24,45 +24,73 @@ const cellImages = [
   'pics/tiles/railVERTICAL.png',
   'pics/tiles/railDOWNRIGHT.png',
 ];
+
+const railDirections = {
+  'railDOWNLEFT.png': ['D', 'L'],
+  'railDOWNRIGHT.png': ['D', 'R'],
+  'railHORIZONTAL.png': ['L', 'R'],
+  'railVERTICAL.png': ['U', 'D'],
+  'railUPLEFT.png': ['U', 'L'],
+  'railUPRIGHT.png': ['U', 'R'],
+};
+
 //#endregion
 
 //#region update cell image
-function updateCellImages(element) {
+function updateCellImages(element, row, col) {
   const currentImage = element.style.backgroundImage;
 
   switch (true) {
     case currentImage.includes('mountainDOWNLEFT') || currentImage.includes('mountain_railDOWNLEFT'):
       element.style.backgroundImage = `url('pics/tiles/mountain_railDOWNLEFT.png')`;
+      directionMatrix[row][col] = ['D', 'L'];
       break;
 
     case currentImage.includes('mountainDOWNRIGHT') || currentImage.includes('mountain_railDOWNRIGHT'):
       element.style.backgroundImage = `url('pics/tiles/mountain_railDOWNRIGHT.png')`;
+      directionMatrix[row][col] = ['D', 'R'];
       break;
 
     case currentImage.includes('mountainUPLEFT') || currentImage.includes('mountain_railUPLEFT'):
       element.style.backgroundImage = `url('pics/tiles/mountain_railUPLEFT.png')`;
+      directionMatrix[row][col] = ['U', 'L'];
       break;
 
     case currentImage.includes('mountainUPRIGHT') || currentImage.includes('mountain_railUPRIGHT'):
       element.style.backgroundImage = `url('pics/tiles/mountain_railUPRIGHT.png')`;
+      directionMatrix[row][col] = ['U', 'R'];
       break;
 
     case currentImage.includes('bridgeHORIZONTAL') || currentImage.includes('bridge_railHORIZONTAL'):
       element.style.backgroundImage = `url('pics/tiles/bridge_railHORIZONTAL.png')`;
+      directionMatrix[row][col] = ['L', 'R'];
       break;
 
     case currentImage.includes('bridgeVERTICAL') || currentImage.includes('bridge_railVERTICAL'):
       element.style.backgroundImage = `url('pics/tiles/bridge_railVERTICAL.png')`;
+      directionMatrix[row][col] = ['U', 'D'];
       break;
 
     case currentImage.includes('oasis.png'):
       element.style.backgroundImage = `url("pics/tiles/oasis.png")`;
+      directionMatrix[row][col] = ['P', 'P'];
       break;
 
     default:
-      element.style.backgroundImage = `url(${cell.nextImage()})`;
+      const nextImageUrl = cell.nextImage();
+      element.style.backgroundImage = `url(${nextImageUrl})`;
+
+      const imageName = nextImageUrl.split('/').pop();
+
+      const direction = railDirections[imageName];
+      directionMatrix[row][col] = direction;
       break;
   }
+  /*directionMatrix.forEach((row, rowIndex) => {
+    console.log(`Row ${rowIndex}: ${JSON.stringify(row)}`);
+  });
+  console.log("");*/
+  checkState(directionMatrix, 0, 1);
 }
 //#endregion
 
@@ -182,7 +210,8 @@ const timer = document.querySelector("#timer");
 
 let selectedDifficulty = null;
 let playerName = null;
-let timerInterval = null;
+let directionMatrix = [];
+let startedTime = Date.now();
 
 const cell = new Cell(cellImages);
 const gridLayout = new GridLayout();
@@ -221,6 +250,8 @@ startButton.addEventListener("click", startGame);
 //#endregion
 
 //#region START GAME
+
+let timerInterval = null;
 function startGame() {
   playerName = nameInput.value.trim();
   if (!playerName || !selectedDifficulty) {
@@ -238,11 +269,6 @@ function startGame() {
 
   generateGrid(selectedDifficulty);
 
-  document.querySelectorAll(".cell").forEach(cell => {
-    cell.addEventListener('click', () => {
-      updateCellImages(cell);
-    });
-  });
 }
 
 function generateGrid(difficulty) {
@@ -252,14 +278,30 @@ function generateGrid(difficulty) {
   gameGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   gameGrid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-  const layout = gridLayout.getRandomLayout(size);;
+  directionMatrix = [];
+  for (let i = 0; i < size; i++) {
+    directionMatrix[i] = new Array(size).fill(null);
+  }
 
-  layout.forEach(imageUrl => {
+  const layout = gridLayout.getRandomLayout(size);
+
+  layout.forEach((imageUrl, index) => {
+    const row = Math.floor(index / size);
+    const col = index % size;
     const cell = document.createElement("div");
     cell.classList.add("cell");
-    cell.style.backgroundImage = `url(${imageUrl})`;
+    if (`url(${imageUrl})`.match('pics/tiles/oasis.png')) {
+      directionMatrix[row][col] = ['P', 'P'];
+      cell.style.backgroundImage = `url(${imageUrl})`;
+    } else {
+      cell.style.backgroundImage = `url(${imageUrl})`;
+    }
+
     cell.style.backgroundSize = 'cover';
     cell.style.backgroundPosition = 'center';
+    cell.dataset.row = row;
+    cell.dataset.col = col;
+    cell.addEventListener("click", () => updateCellImages(cell, row, col));
     gameGrid.appendChild(cell);
   });
 }
@@ -276,5 +318,84 @@ delegate(difficultyButtonsContainer, "div", "click", (event, closestChild) => {
 //#endregion
 
 //#region GAME STATE CHECK
+const directionMap = {
+  'R': [0, 1],  // Right
+  'L': [0, -1], // Left
+  'U': [-1, 0], // Up
+  'D': [1, 0],  // Down
+};
 
-//#endregion
+function checkState(matrix, startX, startY) {
+  let connectedCount = 0;
+  let visited = new Set();
+  let lastPlaced = matrix[0][0];
+  let poundCount = 0;
+  let totalRails = 0;
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (Array.isArray(matrix[i][j]) && matrix[i][j][0] === 'P') {
+        poundCount++;
+      } else {
+        totalRails++;
+      }
+    }
+  }
+
+  function isValid(x, y) {
+    return x >= 0 && x < matrix.length && y >= 0 && y < matrix[0].length;
+  }
+
+  function exploreRail(x, y) {
+    if (visited.has(`${x},${y}`) || !isValid(x, y)) return;
+
+    let cell = matrix[x][y];
+    if (!cell || cell === 'P') return;
+
+    visited.add(`${x},${y}`);
+    connectedCount++;
+    lastPlaced = matrix[x][y];
+
+    for (let dir of cell) {
+      let [dx, dy] = directionMap[dir];
+      let nx = x + dx, ny = y + dy;
+
+      if (isValid(nx, ny) && !visited.has(`${nx},${ny}`)) {
+        let nextCell = matrix[nx][ny];
+
+        if (nextCell && nextCell.includes(getOppositeDirection(dir))) {
+          exploreRail(nx, ny);
+        }
+      }
+    }
+  }
+
+  function getOppositeDirection(dir) {
+    switch (dir) {
+      case 'R': return 'L';
+      case 'L': return 'R';
+      case 'U': return 'D';
+      case 'D': return 'U';
+    }
+  }
+
+  exploreRail(startX, startY);
+
+  if (connectedCount === totalRails) {
+    const playerName = document.querySelector('#name-input').value;
+    document.querySelector('.game-winner #player-name').innerText = playerName;
+
+    const elapsed = Date.now() - startedTime;
+    const seconds = Math.floor(elapsed / 1000) % 60;
+    const minutes = Math.floor(elapsed / 60000);
+    document.querySelector('.game-winner #timer').innerText = `${formatTime(minutes)}:${formatTime(seconds)}`;
+
+    document.querySelector('.game-winner').classList.remove('hidden');
+    document.querySelector('.game-board').classList.remove('visible');
+    document.querySelector('.game-board').classList.add('hidden');
+  }
+  function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+  }
+}
+//#endregion 
