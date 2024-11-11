@@ -314,3 +314,10 @@ h3 {
   margin: 10px auto;
   opacity: 0.7;
 }
+.game-winner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 90vh;
+}
