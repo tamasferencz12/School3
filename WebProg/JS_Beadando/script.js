@@ -88,8 +88,7 @@ function updateCellImages(element, row, col) {
   }
   /*directionMatrix.forEach((row, rowIndex) => {
     console.log(`Row ${rowIndex}: ${JSON.stringify(row)}`);
-  });
-  console.log("");*/
+  });*/
   checkState(directionMatrix, 0, 1);
 }
 //#endregion
@@ -325,10 +324,10 @@ delegate(difficultyButtonsContainer, "div", "click", (event, closestChild) => {
 
 //#region GAME STATE CHECK
 const directionMap = {
-  'R': [0, 1],  // Right
-  'L': [0, -1], // Left
-  'U': [-1, 0], // Up
-  'D': [1, 0],  // Down
+  'R': [0, 1],
+  'L': [0, -1],
+  'U': [-1, 0],
+  'D': [1, 0],
 };
 
 function checkState(matrix, startX, startY) {
@@ -389,7 +388,7 @@ function checkState(matrix, startX, startY) {
 
   if (connectedCount === totalRails) {
     const playerName = document.querySelector('#name-input').value;
-    document.querySelector('.game-winner #player-name').innerText = playerName;
+    document.querySelector('.game-winner #player-name').innerText = playerName.toUpperCase();
 
     const elapsed = Date.now() - startedTime;
     const seconds = Math.floor(elapsed / 1000) % 60;
@@ -406,7 +405,7 @@ function checkState(matrix, startX, startY) {
     document.querySelector('#winner-menu-button').classList.add('visible');
 
     updateTopScores(playerName, elapsed, boardSize);
-    document.addEventListener("DOMContentLoaded", displayTopScores);
+    displayTopScores();
   }
 }
 function formatTime(time) {
@@ -416,26 +415,34 @@ function formatTime(time) {
 
 //#region Top Score
 function updateTopScores(playerName, time, boardSize) {
-  let topScores = JSON.parse(localStorage.getItem("topScores")) || [];
+  const key = boardSize === 5 ? "topScores5x5" : "topScores7x7";
+  let topScores = JSON.parse(localStorage.getItem(key)) || [];
 
-  topScores.push({ name: playerName, time: time, boardSize: boardSize });
+  topScores.push({ name: playerName, time: time });
   topScores.sort((a, b) => a.time - b.time);
-  topScores = topScores.slice(0, 5);
+  topScores = topScores.slice(0, 3);
 
-  localStorage.setItem("topScores", JSON.stringify(topScores));
+  localStorage.setItem(key, JSON.stringify(topScores));
 
   displayTopScores();
 }
 
 function displayTopScores() {
+  const key = boardSize === 5 ? "topScores5x5" : "topScores7x7";
   const scoreList = document.querySelector("#score-list");
+  const scoreHeading = document.querySelector("#top-scores-h");
+
   scoreList.innerHTML = "";
+  scoreHeading.textContent = boardSize == 5 ? "Top Scores - 5x5 Grid" : "Top Scores - 7x7 Grid";
 
-  const topScores = JSON.parse(localStorage.getItem("topScores")) || [];
-
+  const topScores = JSON.parse(localStorage.getItem(key)) || [];
   topScores.forEach((score, index) => {
     const listItem = document.createElement("li");
-    listItem.textContent = `${index + 1}. ${score.name} - ${score.boardSize}: ${formatTime(Math.floor(score.time / 60000))}:${formatTime(Math.floor(score.time / 1000) % 60)}`;
+    const minutes = Math.floor(score.time / 60000).toString().padStart(2, '0');
+    const seconds = Math.floor((score.time % 60000) / 1000).toString().padStart(2, '0');
+    const milliseconds = (score.time % 1000).toString().padStart(3, '0');
+
+    listItem.textContent = `${index + 1}. ${score.name}: ${minutes}:${seconds}:${milliseconds}`;
     scoreList.appendChild(listItem);
   });
 }

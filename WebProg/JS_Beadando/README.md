@@ -25,9 +25,9 @@ Minimálisan teljesítendő (8 pont)
 Alap feladatok (12 pont)
 
 - [x] Lehelyezés: Az elemeket szabályosan tudom lehelyezni. (Hídon csak egyenesen, Hegynél csak 90°-ban, Oázisra pedig nem tudunk lehelyezni semmit, üres mezőre bármilyet) (4 pont)
-- [3/4] Ellenőrzés: A játék ellenőrzi, hogy megoldottuk-e a feladványt. Tehát azt, hogy: minden mezőt, amit lehet csak egyszer érint; körbeér az útvonal; minden mezőből át lehet jutni a megfelelő szomszédos mezőbe; mindenhol a megfelelő elem szerepel (4 pont)
+- [x] Ellenőrzés: A játék ellenőrzi, hogy megoldottuk-e a feladványt. Tehát azt, hogy: minden mezőt, amit lehet csak egyszer érint; körbeér az útvonal; minden mezőből át lehet jutni a megfelelő szomszédos mezőbe; mindenhol a megfelelő elem szerepel (4 pont)
 - [x] Játék vége: A játék végén látjuk, hogy mennyi idő alatt teljesítettük a pályát. (1 pont)
-- [ ] Toplista: A játék végén megjelenik a toplista, hogy az adott nehézségű pályát kinek mennyi idő alatt sikerült teljesítenie (2 pont)
+- [x] Toplista: A játék végén megjelenik a toplista, hogy az adott nehézségű pályát kinek mennyi idő alatt sikerült teljesítenie (2 pont)
 - [x] Egyéb: igényes kinézet és kódszervezés (1 pont)
 
 Plusz feladatok (5 pont)
