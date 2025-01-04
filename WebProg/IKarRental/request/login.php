@@ -4,7 +4,8 @@ session_start();
 
 $form_data = [
     'mail' => $_POST['mail'] ?? '',
-    'jszo' => $_POST['jszo'] ?? ''
+    'jszo' => $_POST['jszo'] ?? '',
+    'referer' => $_POST['referer'] ?? '',
 ];
 
 $felhasznalo_storage = uj_storage('../adatok/felhasznalok');
@@ -24,7 +25,8 @@ if (
 
 if (count($hibak) == 0) {
     $_SESSION['felhasznalo_id'] = $felhasznalo['id'];
-    atiranyit('../index.php');
+    $page = $form_data['referer'] ?? 'index.php';
+    atiranyit("../" . urldecode($page));
 } else {
     $_SESSION['hibak'] = $hibak;
     atiranyit('../page_login.php');

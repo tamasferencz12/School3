@@ -6,12 +6,22 @@ if ($fid) {
     $felhasznalo_storage = uj_storage('adatok/felhasznalok');
     $felhasznalo = $felhasznalo_storage->findById($fid);
 }
-$aid = $_GET['id'] ?? '';
-$auto = uj_storage('adatok/autok')->findById($aid);
+$autoid = $_GET['id'] ?? '';
+$auto = uj_storage('adatok/autok')->findById($autoid);
 
 if (!isset($auto)) {
     atiranyit('index.php');
 }
+if (!isset($fid)) {
+    atiranyit('page_login.php?referer=' . urlencode('page_auto_reszletek.php?id=' . $autoid));
+}
+
+if ($rid = auto_foglalas()) {
+    atiranyit('page_successful_reservation.php?rid=' . $rid);
+} else if (isset($_SESSION['hibak'])) {
+    atiranyit('page_failed_reservation.php?id=' . $autoid);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +71,14 @@ if (!isset($auto)) {
                 <li><strong>Férőhelyek száma:</strong> <?= htmlspecialchars($auto['passengers']) ?></li>
             </ul>
             <p class="price"><strong><?= number_format($auto['daily_price_huf'], 0, '.', ' ') ?> Ft</strong>/nap</p>
-            <div class="buttons">
-                <button>Dátum kiválasztása</button>
-                <button>Lefoglalom</button>
-            </div>
+            <form method="POST">
+                <div class="buttons filters">
+                    <input type="hidden" name="autoid" value="<?= $autoid ?>">
+                    <input type="date" name="date_from" placeholder="Dátum-tól">
+                    <input type="date" name="date_to" placeholder="Dátum-ig">
+                    <button type="submit">Lefoglalom</button>
+                </div>
+            </form>
         </div>
     </main>
     <footer class="footer">

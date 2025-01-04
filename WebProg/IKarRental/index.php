@@ -65,8 +65,8 @@ $autok_storage = uj_storage('adatok/autok');
     <div class="filters">
       <form method="GET">
         <input type="number" name="passengers" value="<?php echo $passengers ?>" placeholder="0 férőhely" min="1">
-        <input type="date" name="date_from" placeholder="Dátum-tól">
-        <input type="date" name="date_to" placeholder="Dátum-ig">
+        <input type="date" name="date_from" placeholder="Dátum-tól" value="<?= $date_from ?>">
+        <input type="date" name="date_to" placeholder="Dátum-ig" value="<?= $date_to ?>">
         <select name="transmission">
           <option value="">Váltó típusa</option>
           <option value="Automata"

@@ -6,7 +6,28 @@ $fid = $_SESSION['felhasznalo_id'] ?? null;
 if ($fid) {
     $felhasznalo_storage = uj_storage('adatok/felhasznalok');
     $felhasznalo = $felhasznalo_storage->findById($fid);
+} else {
+    atiranyit("index.php");
 }
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $rid = $_POST['rid'] ?? false;
+    if ($rid) {
+        uj_storage('adatok/foglalasok')->delete($rid);
+    }
+}
+
+$reservations = uj_storage('adatok/foglalasok')->findAll(['userid' => $fid]);
+
+$auto_storage = uj_storage('adatok/autok');
+$reservations = array_map(function ($reservation) use ($auto_storage) {
+    $reservation['auto'] = $auto_storage->findById($reservation['autoid']);
+    return $reservation;
+}, $reservations);
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -42,6 +63,25 @@ if ($fid) {
             </div>
             <h3><?= htmlspecialchars($felhasznalo['nev']) ?></h3>
             <p><strong>Email:</strong> <?= htmlspecialchars($felhasznalo['email']) ?></p>
+        </div>
+
+        <div class="car-grid">
+            <?php foreach ($reservations as $reservation): ?>
+                <div class="car-card">
+                    <img src="<?= htmlspecialchars($reservation['auto']['image']) ?>" alt="<?= htmlspecialchars($reservation['auto']['brand'] . ' ' . $reservation['auto']['model']) ?>">
+                    <div class="car-grid-text">
+                        <span><?= htmlspecialchars($reservation['auto']['brand'] . ' ' . $reservation['auto']['model']) ?></span>
+                        <p class="car-card-price"><strong>Lefoglava: <?= htmlspecialchars($reservation['date_from']) . '-' . htmlspecialchars($reservation['date_to']) ?> </strong></p>
+                        <p><?= htmlspecialchars($reservation['auto']['passengers']) ?> férőhely - <?= htmlspecialchars($reservation['auto']['transmission']) ?></p>
+                        <form method="POST">
+                            <div class="buttons">
+                                <input type="hidden" name="rid" value="<?= $reservation['id'] ?>">
+                                <button type="submit" style="background-color: red; color:white;">Lemond</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </main>
     <footer class="footer">

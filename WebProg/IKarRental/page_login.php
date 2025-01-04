@@ -3,7 +3,7 @@ require_once 'support/fuggvenyek.php';
 session_start();
 $fid = $_SESSION['felhasznalo_id'] ?? null;
 $hibak = munkamenet_valtozo('hibak');
-
+$referer = $_GET['referer'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +33,7 @@ $hibak = munkamenet_valtozo('hibak');
     </div>
 
     <form class="login-form" action="request/login.php" method="POST">
+        <input type="hidden" name="referer" value="<?= $referer ?>">
         <div class="form-group">
             <label for="mail">E-mail</label>
             <input id="mail" class="login-usrn-label" name="mail" type="text" required />
