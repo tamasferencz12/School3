@@ -283,16 +283,19 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #ffc107;
+  color: #000;
+}
+.car-info .buttons button:disabled {
+  background-color: #cccccc; /* Gray color for disabled state */
+  color: #666666; /* Lighter text for contrast */
+  cursor: not-allowed; /* Change cursor to show it's not clickable */
+  opacity: 0.7; /* Make it visually distinct as disabled */
 }
 
 .car-info .buttons button:first-child {
   background-color: #4a4aff;
   color: #fff;
-}
-
-.car-info .buttons button:last-child {
-  background-color: #ffc107;
-  color: #000;
 }
 
 .footer {

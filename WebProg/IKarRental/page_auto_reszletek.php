@@ -1,6 +1,12 @@
 <?php
 require_once 'support/fuggvenyek.php';
 session_start();
+
+if (($_GET['action'] ?? '') === 'info') {
+    echo json_encode(auto_foglalas_info());
+    die();
+}
+
 $fid = $_SESSION['felhasznalo_id'] ?? null;
 if ($fid) {
     $felhasznalo_storage = uj_storage('adatok/felhasznalok');
@@ -73,12 +79,13 @@ if ($rid = auto_foglalas()) {
             <p class="price"><strong><?= number_format($auto['daily_price_huf'], 0, '.', ' ') ?> Ft</strong>/nap</p>
             <form method="POST">
                 <div class="buttons filters">
-                    <input type="hidden" name="autoid" value="<?= $autoid ?>">
-                    <input type="date" name="date_from" placeholder="Dátum-tól">
-                    <input type="date" name="date_to" placeholder="Dátum-ig">
-                    <button type="submit">Lefoglalom</button>
+                    <input type="hidden" id="autoid" name="autoid" value="<?= $autoid ?>">
+                    <input type="date" id="date_from" name="date_from" placeholder="Dátum-tól">
+                    <input type="date" id="date_to" name="date_to" placeholder="Dátum-ig">
+                    <button type="submit" id="submit" disabled>Lefoglalom</button>
                 </div>
             </form>
+            <p class="price" id="text"></p>
         </div>
     </main>
     <footer class="footer">
@@ -91,5 +98,54 @@ if ($rid = auto_foglalas()) {
         </div>
     </footer>
 </body>
+
+
+<script>
+    // Select elements
+    const autoid = document.getElementById('autoid');
+    const dateFromInput = document.getElementById('date_from');
+    const dateToInput = document.getElementById('date_to');
+    const submitButton = document.getElementById('submit');
+    const text = document.getElementById('text');
+
+    // Function to check if both fields are set and enable the button
+    function checkAndEnableSubmit() {
+        const autoId = autoid.value;
+        const dateFrom = dateFromInput.value;
+        const dateTo = dateToInput.value;
+
+        if (dateFrom && dateTo && autoId) {
+            // Build the query string
+            const queryString = `?action=info&id=${encodeURIComponent(autoId)}&date_from=${encodeURIComponent(dateFrom)}&date_to=${encodeURIComponent(dateTo)}`;
+
+            // Fetch JSON using GET
+            fetch(`/page_auto_reszletek.php${queryString}`, {
+                    method: 'GET',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Fetched JSON:', data);
+                    if (data.error) {
+                        text.innerHTML = data.error;
+                        submitButton.disabled = true;
+                    } else if (data.info) {
+                        text.innerHTML = data.info;
+                        submitButton.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching JSON:', error);
+                    submitButton.disabled = true;
+                });
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
+    // Add event listeners to both inputs
+    dateFromInput.addEventListener('change', checkAndEnableSubmit);
+    dateToInput.addEventListener('change', checkAndEnableSubmit);
+</script>
+
 
 </html>

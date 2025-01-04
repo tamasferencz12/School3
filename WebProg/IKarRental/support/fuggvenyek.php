@@ -225,3 +225,42 @@ function auto_foglalas()
     }
     return false;
 }
+
+
+function auto_foglalas_info()
+{
+    $autoId = $_GET['id'] ?? false;
+    $date_from = $_GET['date_from'] ?? false;
+    $date_to = $_GET['date_to'] ?? false;
+
+    if (!$date_from || !$date_to) {
+        return ['error' => "Nincs kiválasztott időintervallum."];
+    } else if (strtotime($date_from . " 23:59:00") < strtotime('now')) {
+        return ['error' => "Helytelen a kiválasztott időintervallum (múlt)."];
+    } else if (strtotime($date_from) > strtotime($date_to)) {
+        return ['error' => "Helytelen a kiválasztott időintervallum."];
+    }
+
+    $foglalasok_storage = uj_storage('adatok/foglalasok');
+    $auto_foglalasok = $foglalasok_storage->findAll(['autoid' => $autoId]);
+    if (!empty($auto_foglalasok)) {
+        $auto_foglalasok = array_filter($auto_foglalasok, function ($foglalas) use ($date_from, $date_to) {
+            if (strtotime($foglalas['date_to']) < strtotime($date_from) || strtotime($date_to) < strtotime($foglalas['date_from'])) {
+                return false;
+            }
+            return true;
+        });
+
+        if (!empty($auto_foglalasok)) {
+            $intervallumok = array_map(function ($item) {
+                return "{$item['date_from']}-{$item['date_to']}";
+            }, $auto_foglalasok);
+
+            return ['error' => "Foglalt a(z) intervallumban: " . join(", ", $intervallumok)];
+        }
+    }
+
+    $days = abs((strtotime($date_to) - strtotime($date_from)) / (60 * 60 * 24)) + 1;
+    $daily_price_huf = uj_storage('adatok/autok')->findById($autoId)['daily_price_huf'];
+    return ['info' => " $days napra, osszesen " . ($days * $daily_price_huf) . " Ft"];
+}
