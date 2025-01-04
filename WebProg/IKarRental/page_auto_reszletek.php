@@ -101,24 +101,20 @@ if ($rid = auto_foglalas()) {
 
 
 <script>
-    // Select elements
     const autoid = document.getElementById('autoid');
     const dateFromInput = document.getElementById('date_from');
     const dateToInput = document.getElementById('date_to');
     const submitButton = document.getElementById('submit');
     const text = document.getElementById('text');
 
-    // Function to check if both fields are set and enable the button
     function checkAndEnableSubmit() {
         const autoId = autoid.value;
         const dateFrom = dateFromInput.value;
         const dateTo = dateToInput.value;
 
         if (dateFrom && dateTo && autoId) {
-            // Build the query string
             const queryString = `?action=info&id=${encodeURIComponent(autoId)}&date_from=${encodeURIComponent(dateFrom)}&date_to=${encodeURIComponent(dateTo)}`;
 
-            // Fetch JSON using GET
             fetch(`/page_auto_reszletek.php${queryString}`, {
                     method: 'GET',
                 })
@@ -142,7 +138,6 @@ if ($rid = auto_foglalas()) {
         }
     }
 
-    // Add event listeners to both inputs
     dateFromInput.addEventListener('change', checkAndEnableSubmit);
     dateToInput.addEventListener('change', checkAndEnableSubmit);
 </script>
