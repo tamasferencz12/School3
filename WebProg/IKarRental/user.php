@@ -89,7 +89,13 @@ $reservations = array_map(function ($reservation) use ($auto_storage, $user_stor
                         <form method="POST">
                             <div class="buttons">
                                 <input type="hidden" name="rid" value="<?= $reservation['id'] ?>">
-                                <button type="submit" style="background-color: red; color:white;">Lemond</button>
+                                <button type="submit" style="background-color: red; color:white;">
+                                    <?php if (isset($reservation['user'])): ?>
+                                        Törlés
+                                    <?php else: ?>
+                                        Lemondás
+                                    <?php endif; ?>
+                                </button>
                             </div>
                         </form>
                     </div>

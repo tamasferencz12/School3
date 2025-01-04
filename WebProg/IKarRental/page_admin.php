@@ -62,6 +62,7 @@ if (($_POST['action'] ?? false) === 'delete'  && auto_torles()) {
     <a class="IKarRental" href="index.php">IKarRental</a>
     <nav class="nav-admin">
         <a href="index.php">Főoldal</a>
+        <a href="page_admin.php">Új autó hozzáadása </a>
         <a href="request/logout.php">Kijelentkezés</a>
         <a href="user.php">
             <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #ffcc00; color: black; 

@@ -39,7 +39,7 @@ $autok_storage = uj_storage('adatok/autok');
       <?php if ($fid): ?>
         <a href="index.php">Főoldal</a>
         <?php if ($felhasznalo['admin']): ?>
-          <a href="page_admin.php">Admin felület</a>
+          <a href="page_admin.php">Új autó hozzáadása </a>
         <?php endif; ?>
         <a href="request/logout.php">Kijelentkezés</a>
         <a href="user.php">
