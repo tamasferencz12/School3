@@ -100,7 +100,9 @@ $autok_storage = uj_storage('adatok/autok');
             <a href="page_auto_reszletek.php?id=<?= $auto['id'] ?>" class="car-card-brand"><?= htmlspecialchars($auto['brand']) ?> <?= htmlspecialchars($auto['model']) ?></a>
             <p class="car-card-price"><strong>Ár: <?= htmlspecialchars($auto['daily_price_huf']) ?> Ft/nap</strong></p>
             <p><?= htmlspecialchars($auto['passengers']) ?> férőhely - <?= htmlspecialchars($auto['transmission']) ?></p>
-            <a class="reserve-btn" href="page_auto_reszletek.php?id=<?= $auto['id'] ?>">Foglalás</a>
+            <?php if (!$felhasznalo['admin']): ?>
+              <a class="reserve-btn" href="page_auto_reszletek.php?id=<?= $auto['id'] ?>">Foglalás</a>
+            <?php endif; ?>
           </div>
         </div>
       <?php endforeach; ?>

@@ -17,12 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         uj_storage('adatok/foglalasok')->delete($rid);
     }
 }
-
-$reservations = uj_storage('adatok/foglalasok')->findAll(['userid' => $fid]);
+$filter = $felhasznalo['admin'] ? [] : ['userid' => $fid];
+$reservations = uj_storage('adatok/foglalasok')->findAll($filter);
 
 $auto_storage = uj_storage('adatok/autok');
-$reservations = array_map(function ($reservation) use ($auto_storage) {
+$user_storage = $felhasznalo['admin']  ? uj_storage('adatok/felhasznalok') : null;
+
+$reservations = array_map(function ($reservation) use ($auto_storage, $user_storage) {
     $reservation['auto'] = $auto_storage->findById($reservation['autoid']);
+    if ($user_storage) {
+        $reservation['user'] = $user_storage->findById($reservation['userid']);
+    }
     return $reservation;
 }, $reservations);
 
@@ -71,7 +76,15 @@ $reservations = array_map(function ($reservation) use ($auto_storage) {
                     <img src="<?= htmlspecialchars($reservation['auto']['image']) ?>" alt="<?= htmlspecialchars($reservation['auto']['brand'] . ' ' . $reservation['auto']['model']) ?>">
                     <div class="car-grid-text">
                         <span><?= htmlspecialchars($reservation['auto']['brand'] . ' ' . $reservation['auto']['model']) ?></span>
-                        <p class="car-card-price"><strong>Lefoglava: <?= htmlspecialchars($reservation['date_from']) . '-' . htmlspecialchars($reservation['date_to']) ?> </strong></p>
+                        <p class="car-card-price"><strong>
+                                <?php if (isset($reservation['user'])): ?>
+                                    <?= htmlspecialchars($reservation['user']['nev']) ?> <br>
+                                <?php else: ?>
+                                    Lefoglalva:
+                                <?php endif; ?>
+                                <?= htmlspecialchars($reservation['date_from']) . '-' . htmlspecialchars($reservation['date_to']) ?>
+                            </strong>
+                        </p>
                         <p><?= htmlspecialchars($reservation['auto']['passengers']) ?> férőhely - <?= htmlspecialchars($reservation['auto']['transmission']) ?></p>
                         <form method="POST">
                             <div class="buttons">

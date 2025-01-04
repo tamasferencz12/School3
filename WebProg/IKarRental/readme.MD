@@ -22,9 +22,9 @@ ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az 
 - [x] 1.0 pont Kijelentkezés: Profiloldalon és minden oldalon elérhető
 - [x] 2.0 pont Autóoldal: A kiválasztott autót le tudom foglalni két időpont között, sikeres foglalás esetén a foglalás elmentődik
 - [x] 1.0 pont Autóoldal: Sikeres és sikertelen foglalás esetén a felhasználó értesítve van, sikeres esetén megjelennek a foglalás és az autó adatai
-- [ ] 1.0 pont Főoldal: A főoldalon tudunk szűrni a szabad időpontokra is
+- [x] 1.0 pont Főoldal: A főoldalon tudunk szűrni a szabad időpontokra is
 - [x] 1.0 pont Profiloldal: Megjelennek a felhasználó korábbi foglalásai
-- [ ] 1.0 pont Admin: Az admin bejelentkezése esetén a profil oldalán megjelenik az összes foglalás, ezek a foglalások törölhetőek
+- [x] 1.0 pont Admin: Az admin bejelentkezése esetén a profil oldalán megjelenik az összes foglalás, ezek a foglalások törölhetőek
 - [x] 1.0 pont Admin: Autók adatainak módosítása (hibakezeléssel)
 - [x] 1.0 pont Admin: Autók törlése
 - [ ] 2.0 pont Megjelenés: Igényes, mobilbarát megjelenés
