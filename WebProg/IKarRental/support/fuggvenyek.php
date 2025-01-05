@@ -19,6 +19,12 @@ function uj_storage($filenev)
     return new Storage($json_kezelo);
 }
 
+function post_data(): array
+{
+    $post_data = file_get_contents('php://input');
+    return !empty($post_data) ? json_decode($post_data, true) : [];
+}
+
 function autok_szures(array $autok): array
 {
     $passengers = $_GET['passengers'] ?? '';
@@ -167,67 +173,66 @@ function auto_torles()
     return false;
 }
 
-function auto_foglalas()
+function auto_foglalas(array $data)
 {
     unset($_SESSION['hibak']);
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $fid = $_SESSION['felhasznalo_id'] ?? null;
-        $autoId = $_POST['autoid'] ?? false;
-        $date_from = $_POST['date_from'] ?? false;
-        $date_to = $_POST['date_to'] ?? false;
-        if ($autoId === false) {
-            $errors[] = "Nincs kiválasztott autó.";
-        }
+    $fid = $_SESSION['felhasznalo_id'] ?? null;
+    $autoId = $data['autoid'] ?? false;
+    $date_from = $data['date_from'] ?? false;
+    $date_to = $data['date_to'] ?? false;
+    if ($autoId === false) {
+        $errors[] = "Nincs kiválasztott autó.";
+    }
 
-        if (!$date_from || !$date_to) {
-            $errors[] = "Nincs kiválasztott időintervallum.";
-        } else if (strtotime($date_from . " 23:59:00") < strtotime('now')) {
-            $errors[] = "Helytelen a kiválasztott időintervallum (múlt).";
-        } else if (strtotime($date_from) > strtotime($date_to)) {
-            $errors[] = "Helytelen a kiválasztott időintervallum.";
-        }
+    if (!$date_from || !$date_to) {
+        $errors[] = "Nincs kiválasztott időintervallum.";
+    } else if (strtotime($date_from . " 23:59:00") < strtotime('now')) {
+        $errors[] = "Helytelen a kiválasztott időintervallum (múlt).";
+    } else if (strtotime($date_from) > strtotime($date_to)) {
+        $errors[] = "Helytelen a kiválasztott időintervallum.";
+    }
 
 
-        if (empty($errors)) {
-            $foglalasok_storage = uj_storage('adatok/foglalasok');
-            $auto_foglalasok = $foglalasok_storage->findAll(['autoid' => $autoId]);
-            if (!empty($auto_foglalasok)) {
+    if (empty($errors)) {
+        $foglalasok_storage = uj_storage('adatok/foglalasok');
+        $auto_foglalasok = $foglalasok_storage->findAll(['autoid' => $autoId]);
+        if (!empty($auto_foglalasok)) {
 
-                $auto_foglalasok = array_filter($auto_foglalasok, function ($foglalas) use ($date_from, $date_to) {
-                    if (strtotime($foglalas['date_to']) < strtotime($date_from) || strtotime($date_to) < strtotime($foglalas['date_from'])) {
-                        return false;
-                    }
-                    return true;
-                });
-
-                if (!empty($auto_foglalasok)) {
-
-                    $intervallumok = array_map(function ($item) {
-                        return "{$item['date_from']}-{$item['date_to']}";
-                    }, $auto_foglalasok);
-
-                    $_SESSION['hibak'][] = "Foglalt a(z) intervallumban: " . join(", ", $intervallumok);
+            $auto_foglalasok = array_filter($auto_foglalasok, function ($foglalas) use ($date_from, $date_to) {
+                if (strtotime($foglalas['date_to']) < strtotime($date_from) || strtotime($date_to) < strtotime($foglalas['date_from'])) {
                     return false;
                 }
-            }
+                return true;
+            });
 
-            $foglalas = [
-                "autoid" => $autoId,
-                "userid" => $fid,
-                "date_from" => $date_from,
-                "date_to" => $date_to
-            ];
-            return $foglalasok_storage->add($foglalas);
-        } else {
-            $_SESSION['hibak'] = $errors;
+            if (!empty($auto_foglalasok)) {
+
+                $intervallumok = array_map(function ($item) {
+                    return "{$item['date_from']}-{$item['date_to']}";
+                }, $auto_foglalasok);
+
+                $_SESSION['hibak'][] = "Foglalt a(z) intervallumban: " . join(", ", $intervallumok);
+                return false;
+            }
         }
+
+        $foglalas = [
+            "autoid" => $autoId,
+            "userid" => $fid,
+            "date_from" => $date_from,
+            "date_to" => $date_to
+        ];
+        return $foglalasok_storage->add($foglalas);
+    } else {
+        $_SESSION['hibak'] = $errors;
     }
+
     return false;
 }
 
 
-function auto_foglalas_info()
+function auto_foglalas_info(): array
 {
     $autoId = $_GET['id'] ?? false;
     $date_from = $_GET['date_from'] ?? false;

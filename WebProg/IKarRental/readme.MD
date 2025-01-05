@@ -32,5 +32,5 @@ ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az 
 ### Plusz feladatok (max plusz 5 pont)
 
 - [x] 3.0 pont Autó foglalása: Egy autó esetén eleve csak a szabad időpontokat tudjuk kijelölni foglalás esetén, például egy naptár nézetben vizualizálva vannak a szabad időpontok
-- [ ] 2.0 pont AJAX használata: A foglalás után a mentés és visszajelzés AJAX segítségével történik, nem új oldalra irányít minket, hanem például egy általad készített felugró ablakban (nem alertben!) jelez vissza az oldal frissítése nélkül.
+- [x] 2.0 pont AJAX használata: A foglalás után a mentés és visszajelzés AJAX segítségével történik, nem új oldalra irányít minket, hanem például egy általad készített felugró ablakban (nem alertben!) jelez vissza az oldal frissítése nélkül.
 

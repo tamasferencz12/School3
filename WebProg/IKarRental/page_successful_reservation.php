@@ -35,19 +35,6 @@ $foglalas['car'] = uj_storage('adatok/autok')->findById($foglalas['autoid']);
 </head>
 
 <body>
-    <header>
-        <a class="IKarRental" href="index.php">IKarRental</a>
-        <nav class="nav-bar">
-            <?php if ($fid): ?>
-                <a href="user.php">
-                    <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #ffcc00; color: black; 
-             display: flex; align-items: center; justify-content: center; font-size: 24px; margin-left: 10px;">
-                        <?= strtoupper(substr($felhasznalo['nev'], 0, 1)) ?>
-                    </div>
-                </a>
-            <?php endif; ?>
-        </nav>
-    </header>
     <div class="booking">
         <div class="booking-icon">
             <span>✔</span>
@@ -60,15 +47,6 @@ $foglalas['car'] = uj_storage('adatok/autok')->findById($foglalas['autoid']);
         </p>
         <a href="user.php" class="booking-button">Profilom</a>
     </div>
-    <footer class="footer">
-        <p>&copy; 2025 IKarRental | All rights reserved</p>
-        <p>Developed by FT</p>
-        <div class="social-icons">
-            <a href="#" class="social-icon">Facebook</a>
-            <a href="#" class="social-icon">Twitter</a>
-            <a href="#" class="social-icon">Instagram</a>
-        </div>
-    </footer>
 </body>
 
 </html>

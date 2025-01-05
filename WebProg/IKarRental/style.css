@@ -490,8 +490,8 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100vw;
-  height: 60vh;
+  width: auto;
+  height: auto;
   padding: 20px;
   background-color: #1d1d1d;
   border-radius: 10px;

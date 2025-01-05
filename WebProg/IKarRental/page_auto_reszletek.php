@@ -22,10 +22,14 @@ if (!isset($fid)) {
     atiranyit('page_login.php?referer=' . urlencode('page_auto_reszletek.php?id=' . $autoid));
 }
 
-if ($rid = auto_foglalas()) {
-    atiranyit('page_successful_reservation.php?rid=' . $rid);
-} else if (isset($_SESSION['hibak'])) {
-    atiranyit('page_failed_reservation.php?id=' . $autoid);
+$post_data = post_data();
+if (!empty($post_data)) {
+    $rid = auto_foglalas($post_data);
+    if ($rid === false) {
+        atiranyit('page_failed_reservation.php?id=' . $autoid);
+    } else {
+        atiranyit('page_successful_reservation.php?rid=' . $rid);
+    }
 }
 
 ?>
@@ -82,7 +86,7 @@ if ($rid = auto_foglalas()) {
                     <input type="hidden" id="autoid" name="autoid" value="<?= $autoid ?>">
                     <input type="date" id="date_from" name="date_from" placeholder="Dátum-tól">
                     <input type="date" id="date_to" name="date_to" placeholder="Dátum-ig">
-                    <button type="submit" id="submit" disabled>Lefoglalom</button>
+                    <button type="button" id="submit" disabled>Lefoglalom</button>
                 </div>
             </form>
             <p class="price" id="text"></p>
@@ -106,6 +110,102 @@ if ($rid = auto_foglalas()) {
     const dateToInput = document.getElementById('date_to');
     const submitButton = document.getElementById('submit');
     const text = document.getElementById('text');
+
+    function showPopup(content) {
+        const popup = document.createElement('div');
+        popup.id = 'popupContainer';
+        popup.style.position = 'fixed';
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.backgroundColor = '#fff';
+        popup.style.padding = '20px';
+        popup.style.border = '1px solid #ccc';
+        popup.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+        popup.style.zIndex = '1000';
+        popup.style.width = '80%';
+        popup.style.maxWidth = '600px';
+        popup.style.maxHeight = '80%';
+        popup.style.overflowY = 'auto';
+
+        popup.innerHTML = content;
+
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.style.marginTop = '10px';
+        closeButton.style.backgroundColor = '#f44336';
+        closeButton.style.color = '#fff';
+        closeButton.style.border = 'none';
+        closeButton.style.padding = '10px 20px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.borderRadius = '4px';
+
+        closeButton.addEventListener('click', () => {
+            document.body.removeChild(popup);
+            document.body.removeChild(overlay);
+        });
+
+        popup.appendChild(closeButton);
+
+        const overlay = document.createElement('div');
+        overlay.id = 'popupOverlay';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.zIndex = '999';
+
+        overlay.addEventListener('click', () => {
+            document.body.removeChild(popup);
+            document.body.removeChild(overlay);
+        });
+
+        document.body.appendChild(overlay);
+        document.body.appendChild(popup);
+    }
+
+    function submitForm() {
+        const autoId = autoid.value;
+        const dateFrom = dateFromInput.value;
+        const dateTo = dateToInput.value;
+
+        submitButton.disabled = true;
+
+        const queryString = `?id=${encodeURIComponent(autoId)}`;
+
+
+        if (dateFrom && dateTo && autoId) {
+            fetch(`/page_auto_reszletek.php${queryString}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        autoid: autoId,
+                        date_from: dateFrom,
+                        date_to: dateTo
+                    }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text(); // Parse the response body as text
+                })
+                .then(pageContent => {
+                    console.log('Fetched Page Content:', pageContent);
+                    showPopup(pageContent);
+                    submitButton.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error fetching JSON:', error);
+                    submitButton.disabled = true;
+                });
+        }
+
+    }
 
     function checkAndEnableSubmit() {
         const autoId = autoid.value;
@@ -140,6 +240,7 @@ if ($rid = auto_foglalas()) {
 
     dateFromInput.addEventListener('change', checkAndEnableSubmit);
     dateToInput.addEventListener('change', checkAndEnableSubmit);
+    submitButton.addEventListener('click', submitForm);
 </script>
 
 
