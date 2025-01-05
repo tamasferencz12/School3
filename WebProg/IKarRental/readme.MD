@@ -27,7 +27,7 @@ ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az 
 - [x] 1.0 pont Admin: Az admin bejelentkezése esetén a profil oldalán megjelenik az összes foglalás, ezek a foglalások törölhetőek
 - [x] 1.0 pont Admin: Autók adatainak módosítása (hibakezeléssel)
 - [x] 1.0 pont Admin: Autók törlése
-- [ ] 2.0 pont Megjelenés: Igényes, mobilbarát megjelenés
+- [x] 2.0 pont Megjelenés: Igényes, mobilbarát megjelenés
 
 ### Plusz feladatok (max plusz 5 pont)
 

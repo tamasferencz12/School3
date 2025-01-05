@@ -192,7 +192,7 @@ if (!empty($post_data)) {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    return response.text(); // Parse the response body as text
+                    return response.text();
                 })
                 .then(pageContent => {
                     console.log('Fetched Page Content:', pageContent);
