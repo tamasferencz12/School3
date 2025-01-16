@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h1>Fejújított Telefonok</h1>
+    <div class="container">
+        <div class="item-container">
+            <label for="type">Típus: </label>
+            <select name="type" id="type">
+                <option value="all">Mind</option>
+                <option value="iPhone">iPhone</option>
+                <option value="Huawei">Huawei</option>
+                <option value="Galaxy">Samsung</option>
+            </select>
+            <div id="item-list">
+                <div>
+                    <img src="assets/Galaxy-S21.png" />
+                    <p>Galaxy S21</p>
+                    <span>299&nbsp;990&nbsp;Ft</span><button id="Galaxy-S21">Kosárba</button>
+                </div>
+            </div>
+        </div>
+        <div class="cart">
+            <h2>Kosár tartalma:</h2>
+            <table></table>
+            <label for="coupon">Kupon:</label>
+            <input type="text" name="coupon" id="coupon" />
+            <p id="discount"></p>
+            <p id="sum"></p>
+            <button id="checkout">Fizetés</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

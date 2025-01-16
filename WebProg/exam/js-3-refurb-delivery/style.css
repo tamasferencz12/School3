@@ -1,0 +1,31 @@
+/* Alapstílusok */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #2a4d69;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 2px solid #d9e6f2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,196 @@
+/* Általános alapstílusok */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Fejléc */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2a4d69; /* Sötétebb kék */
+    font-size: 2rem;
+}
+
+/* Konténer két oszlopra osztása */
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Kétharmad - egyharmad felosztás */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Terméklista */
+.item-container {
+    background: #ffffff;
+    border: 1px solid #dfe4ea;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#item-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+#item-list div {
+    background-color: #f8f8f8;
+    border: 1px solid #dfe4ea;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+#item-list div:hover {
+    transform: scale(1.05);
+}
+
+#item-list img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#item-list p {
+    font-weight: bold;
+    margin: 5px 0;
+    color: #2a4d69;
+}
+
+#item-list span {
+    display: block;
+    margin-bottom: 10px;
+    color: #ff6b6b; /* Pasztell piros */
+    font-weight: bold;
+}
+
+#item-list button {
+    background-color: #2a4d69; /* Sötétkék */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#item-list button:hover {
+    background-color: #f18d35; /* Pasztell narancs */
+}
+
+/* Kosár */
+.cart {
+    background: #ffffff;
+    border: 1px solid #dfe4ea;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart h2 {
+    margin-bottom: 15px;
+    color: #2a4d69;
+    text-align: center;
+}
+
+.cart table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.cart table td {
+    border: 1px solid #dfe4ea;
+    padding: 8px;
+    text-align: center;
+    color: #333;
+}
+
+.cart label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2a4d69;
+}
+
+.cart input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dfe4ea;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.cart button {
+    background-color: #2a4d69;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.cart button:hover {
+    background-color: #f18d35;
+}
+
+.item-container label {
+    font-weight: bold;
+    color: #2a4d69; 
+    margin-right: 10px;
+}
+
+.item-container select {
+    padding: 8px;
+    border: 1px solid #dfe4ea;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    color: #2a4d69; 
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.item-container select:focus {
+    outline: none;
+    border-color: #f18d35;
+    box-shadow: 0 0 5px rgba(241, 141, 53, 0.5);
+}
+
+.item-container label,
+.item-container select {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#discount, #sum {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    margin: 5px 0;
+}
+
+#discount {
+    color: #ff6b6b;
+}
+
+#sum {
+    color: #2a4d69;
+    font-size: 1.5rem;
+}
